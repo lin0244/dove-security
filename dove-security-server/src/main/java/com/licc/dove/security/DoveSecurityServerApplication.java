@@ -15,11 +15,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-@EnableDiscoveryClient
+
 @Configuration
 @EnableAutoConfiguration
-@EnableFeignClients
-@EnableHystrix
+//@EnableDiscoveryClient
+//@EnableFeignClients
+//@EnableHystrix
 @Import({
 		MvcConfig.class,
 		MyBatisConfig.class,

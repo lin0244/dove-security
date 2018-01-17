@@ -29,8 +29,8 @@ spring:
     restart:
       enabled: true
       exclude: public/**
-eureka:
-  client:
-    service-url:
-        #defaultZone: http://${eurekaserver.user.name}:${eurekaserver.user.password}@${eurekaserver.ip}:${eurekaserver.port}/eureka
-        defaultZone: http://${eurekaserver.ip}:${eurekaserver.port}/eureka
+#eureka:
+#  client:
+#    service-url:
+#        #defaultZone: http://${eurekaserver.user.name}:${eurekaserver.user.password}@${eurekaserver.ip}:${eurekaserver.port}/eureka
+#        defaultZone: http://${eurekaserver.ip}:${eurekaserver.port}/eureka
