@@ -6,7 +6,7 @@
 	<groupId>com.licc.dove</groupId>
 	<artifactId>dove-security-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>dove-security-server</name>
 	<description>dove权限服务端</description>
@@ -35,6 +35,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -69,7 +75,7 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-hystrix</artifactId>
 		</dependency>
-		<!--jumore 依赖jar-->
+		<!--licc 依赖jar-->
 		<dependency>
 			<groupId>com.licc.dove</groupId>
 			<artifactId>dove-dao</artifactId>
@@ -96,7 +102,11 @@
       <artifactId>httpclient</artifactId>
       <version>4.5.2</version>
     </dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
 
   </dependencies>
 

@@ -23,7 +23,7 @@ public class ReflectionUtil {
     @Autowired
 
     public static List<DoveRoleParam> getDefaultRoles(Class clz) throws Exception {
-        Reflections reflections = new Reflections("com.jumore", new SubTypesScanner(true));
+        Reflections reflections = new Reflections("com.licc", new SubTypesScanner(true));
         Set classs = reflections.getSubTypesOf(DefaultRoleEnum.class);
         if (classs.size() == 0)
             return null;

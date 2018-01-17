@@ -16,6 +16,6 @@ public class MyBatisConfig implements MyBatisConfigManager {
 
   @Override
   public String getTypeAliasesPackage() {
-    return "com.jumore.dove.security.domain";
+    return "com.licc.dove.security.domain";
   }
 }

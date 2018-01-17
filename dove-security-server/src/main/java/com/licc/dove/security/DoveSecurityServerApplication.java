@@ -6,6 +6,8 @@ import com.licc.dove.security.config.SecurityConfig;
 import com.licc.dove.security.config.SessionConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
@@ -24,10 +26,16 @@ import org.springframework.context.annotation.Import;
 		SecurityConfig.class,
 		SessionConfig.class
 })
-@ComponentScan("com.jumore")
-public class DoveSecurityServerApplication {
+@ComponentScan("com.licc")
+public class DoveSecurityServerApplication extends SpringBootServletInitializer {
 
-	public static void main(String[] args) {
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(DoveSecurityServerApplication.class);
+	}
+
+	public static void main(String[] args) throws Exception {
 		SpringApplication.run(DoveSecurityServerApplication.class, args);
 	}
 }
+

@@ -1,4 +1,4 @@
-package com.jumore.dove;
+package com.licc.dove;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
