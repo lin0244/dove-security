@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="DoveRoleMapper">
+  <resultMap id="BaseResultMap" type="com.licc.dove.security.vo.DoveRoleVO">
+    <id column="id" property="id" jdbcType="BIGINT"/>
+    <result column="name" property="name" jdbcType="VARCHAR"/>
+    <result column="code" property="code" jdbcType="VARCHAR"/>
+    <result column="plat" property="plat" jdbcType="VARCHAR"/>
+    <result column="type" property="type" jdbcType="INTEGER"/>
+    <result column="delete_flag" property="deleteFlag" jdbcType="BIT"/>
+
+
+  </resultMap>
+  <sql id="Base_Column_List">
+   id,name,code,plat,type,delete_flag
+  </sql>
+
+  <select id="findList" parameterType="Object" resultMap = "BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    from  dove_role where delete_flag = 0
+    and plat = #{plat}
+  </select>
+
+  <select id="getMaxVersionNum" parameterType="Object" resultType="Map">
+    select max(version_num)  as versionNum FROM  dove_role where delete_flag = 0 and type = 0 and plat = #{plat}
+  </select>
+
+  <select id="deleteByMaxVersionNum" parameterType="Object" resultType="Long">
+    update dove_role set delete_flag = 1 WHERE  type = 0 and delete_flag = 0 and version_num &lt;&gt; #{maxVersion}  and plat = #{plat}
+  </select>
+</mapper>

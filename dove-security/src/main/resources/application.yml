@@ -1,0 +1,21 @@
+
+
+#配置服务注册地址
+
+
+
+spring:
+   application:
+        name: dove-security
+   redis:
+        cluster:
+          nodes: 192.168.1.51:7001,192.168.1.51:7002,192.168.1.51:7003,192.168.1.52:7004,192.168.1.52:7005,192.168.1.52:7006
+
+eureka:
+  client:
+    service-url:
+        #defaultZone: http://${eurekaserver.user.name}:${eurekaserver.user.password}@${eurekaserver.ip}:${eurekaserver.port}/eureka
+        defaultZone: ${dove.eurekaserver}/eureka
+
+
+

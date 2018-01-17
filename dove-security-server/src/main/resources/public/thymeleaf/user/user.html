@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+		<meta charset="utf-8" />
+		<title>菜单管理</title>
+		<meta name="keywords" content="权限服务" />
+		<meta name="description" content="权限服务" />
+    <div th:replace="static"></div>
+	</head>
+<body>
+<div th:replace="header"></div>
+	<div class="main-container" id="main-container">
+		<script type="text/javascript">
+      try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+		</script>
+
+		<div class="main-container-inner">
+			<a class="menu-toggler" id="menu-toggler" href="#">
+				<span class="menu-text"></span>
+			</a>
+		</div>
+		<div th:include="sidebar"></div>
+	</div>
+<div class="main-content">
+		<div class="breadcrumbs" id="breadcrumbs">
+  			<script type="text/javascript">
+          try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+  			</script>
+
+  			<ul class="breadcrumb">
+  				<li>
+  					<i class="icon-home home-icon"></i>
+  					<a href="#">首页</a>
+  				</li>
+  					<li>系统管理</li>
+  				<li class="active">个人资料</li>
+  			</ul><!-- .breadcrumb -->
+
+
+  		</div>
+<div class="page-content">
+<div class="row">
+<div class="col-xs-12"><form class="form-horizontal" role="form">
+            									<div class="form-group">
+            										<label class="col-sm-3 control-label no-padding-right" for="用户名"> 用户名： </label>
+
+            										<div class="col-sm-9">
+            											<input type="text" id="userName" placeholder="用户名" readonly="true" th:value="${userName}" class="col-xs-10 col-sm-5"/>
+            										</div>
+            									</div>
+            										<div class="form-group">
+                                  <label class="col-sm-3 control-label no-padding-right" for="用户名"> 平台编码： </label>
+
+                                  <div class="col-sm-9">
+                                    <input type="text" id="plat" placeholder="平台编码" th:value="${plat}" readonly= "true" class="col-xs-10 col-sm-5"/>
+                                  </div>
+                                </div>
+	<div class="form-group">
+	<div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right"> 老密码： </label>
+
+                                    <div class="col-sm-9">
+                                      <input type="text" id="oldPassword" placeholder="老密码" class="col-xs-10 col-sm-5"/>
+                                    </div>
+                                    </div>
+            											<div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right"> 新密码： </label>
+
+                                    <div class="col-sm-9">
+                                      <input type="text" id="newPassword" placeholder="新密码" class="col-xs-10 col-sm-5"/>
+                                    </div>
+                                    </div>
+                            </div>
+                            <div class="clearfix form-actions">
+                            										<div class="col-md-offset-3 col-md-9">
+                            											<button class="btn btn-info" type="button" onclick="update()">
+                            												<i class="icon-ok bigger-110"></i>
+                            												修改
+                            											</button>
+
+
+                            										</div>
+                            									</div>
+</form>
+</div>
+</div>
+            </div>
+</div>
+
+
+</body>
+   <div th:replace="script"></div>
+
+
+
+
+</html>
+<script type="text/javascript" >
+
+function  update() {
+  var userName = $("#userName").val();
+  var plat = $("#plat").val();
+  var oldPassword = $("#oldPassword").val();
+  var newPassword = $("#newPassword").val();
+    $.ajax({
+    url:"/user/update",
+    type:"POST",
+    data:{userName:userName,plat:plat,oldPassword:oldPassword,newPassword:newPassword},
+    success:function(data) {
+          layer.alert(data.desc);
+
+    },
+    error:function() {
+      layer.alert("系统异常");
+    }
+
+    })
+
+}
+
+
+</script>
+

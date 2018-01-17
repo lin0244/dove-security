@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="DoveRoleResourceMapper">
+  <resultMap id="BaseResultMap" type="com.licc.dove.security.vo.DoveRoleResourceVO">
+    <id column="id" property="id" jdbcType="BIGINT"/>
+    <result column="resName" property="resName" jdbcType="VARCHAR"/>
+    <result column="resPath" property="resPath" jdbcType="VARCHAR"/>
+    <result column="roleName" property="roleName" jdbcType="VARCHAR"/>
+    <result column="roleCode" property="roleCode" jdbcType="VARCHAR"/>
+    <result column="type" property="type" jdbcType="INTEGER"/>
+    <result column="plat" property="plat" jdbcType="VARCHAR"/>
+  </resultMap>
+
+
+  <select id="deleteByType" parameterType="Object" resultType="Long">
+    update dove_role_resource set delete_flag = 1 ,update_time = now()  where delete_flag = 0
+      and type = #{type}  and plat = #{plat}
+
+  </select>
+  <select id="findList" parameterType="Object" resultMap = "BaseResultMap">
+    SELECT
+     drr.id,
+     res.name as resName ,
+     res.path as  resPath,
+     role.name as  roleName,
+     role.code as roleCode,
+     drr.plat,
+     drr.type
+    from  dove_role_resource drr,dove_resource res,dove_role role
+    where drr.delete_flag = 0 and  res.delete_flag = 0 and role.delete_flag = 0
+    and drr.role_id = role.id and drr.resource_id  = res.id
+    and drr.plat = #{plat}
+    <if test="resName !=null and resName != ''">
+      AND res.name  like CONCAT('%', #{resName, jdbcType=VARCHAR}, '%')
+    </if>
+    <if test="resPath !=null and resPath != ''">
+      AND res.path  like CONCAT('%', #{resPath, jdbcType=VARCHAR}, '%')
+    </if>
+    <if test="roleName !=null and roleName != ''">
+      AND role.name  like CONCAT('%', #{roleName, jdbcType=VARCHAR}, '%')
+    </if>
+    <if test="roleCode !=null and roleCode != ''">
+      AND role.code  like CONCAT('%', #{roleCode, jdbcType=VARCHAR}, '%')
+    </if>
+  </select>
+
+  <select id="listResourceByUserId" parameterType="Object" resultMap="BaseResultMap">
+    SELECT dr.name as resName , dr.path as  resPath
+    FROM dove_resource dr, dove_role_resource drr, dove_user_role dur WHERE
+    dr.delete_flag = 0 and drr.delete_flag = 0 and dur.delete_flag = 0
+    and dr.id = drr.resource_id and dur.role_id = drr.role_id
+    and dr.plat = drr.plat and drr.plat = dur.plat
+    AND dur.user_id = #{userId}
+    AND dur.plat = #{plat}
+
+
+  </select>
+
+
+</mapper>

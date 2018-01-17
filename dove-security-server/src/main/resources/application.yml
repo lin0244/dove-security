@@ -1,0 +1,36 @@
+server:
+  port: 2222
+
+#配置服务注册地址
+eurekaserver:
+    port: 1111
+    ip: localhost
+    user:
+        name: admin
+        password: admin
+
+spring:
+  application:
+       name: security-service
+  datasource:
+      url: jdbc:mysql://47.94.196.111:3306/dove-security?useUnicode=true&characterEncoding=utf8&useSSL=false
+      name:
+      username: root
+      password: 111111
+      hikari:
+          data-source-properties:
+              cachePrepStmts: true
+              prepStmtCacheSize: 250
+              prepStmtCacheSqlLimit: 2048
+  thymeleaf:
+    cache: false
+    prefix: classpath:/public/thymeleaf/
+  devtools:
+    restart:
+      enabled: true
+      exclude: public/**
+eureka:
+  client:
+    service-url:
+        #defaultZone: http://${eurekaserver.user.name}:${eurekaserver.user.password}@${eurekaserver.ip}:${eurekaserver.port}/eureka
+        defaultZone: http://${eurekaserver.ip}:${eurekaserver.port}/eureka

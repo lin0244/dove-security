@@ -1,0 +1,21 @@
+server:
+  port: 1111
+security:
+  basic:
+    enabled: false #开启认证
+spring:
+  application:
+       name: security-eureka-zuul
+#zuul:
+# routes:
+#   security-api:
+#     path: /security-api/**
+#     serviceId: security-service
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      #defaultZone: http://user:password@localhost:${server.port}/eureka
+      defaultZone: http://localhost:${server.port}/eureka

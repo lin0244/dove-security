@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+		<meta charset="utf-8" />
+		<title>权限服务-环境管理</title>
+		<meta name="keywords" content="权限服务" />
+		<meta name="description" content="权限服务" />
+    <div th:replace="static"></div>
+	</head>
+<body>
+<div th:replace="header"></div>
+	<div class="main-container" id="main-container">
+		<script type="text/javascript">
+      try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+		</script>
+
+		<div class="main-container-inner">
+			<a class="menu-toggler" id="menu-toggler" href="#">
+				<span class="menu-text"></span>
+			</a>
+		</div>
+		<div th:include="sidebar"></div>
+	</div>
+<div class="main-content">
+		<div class="breadcrumbs" id="breadcrumbs">
+  			<script type="text/javascript">
+          try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+  			</script>
+
+  			<ul class="breadcrumb">
+  				<li>
+  					<i class="icon-home home-icon"></i>
+  					<a href="#">首页</a>
+  				</li>
+  					<li>权限服务</li>
+  				<li class="active">平台用户管理</li>
+  			</ul><!-- .breadcrumb -->
+
+
+  		</div>
+		<div class="page-content">
+
+
+  						<div class="row">
+  							<div class="col-xs-12">
+
+
+
+<label>名称：</label>                    <input type="text" name="userName" />
+<button class="btn btn-xs btn-info" onclick="doSearch()">搜索</button>
+  								<div class="row">
+  									<div class="col-xs-12">
+  										<h3 class="header smaller lighter blue"></h3>
+  										<div class="table-header">
+  										</div>
+  										<div class="table-responsive">
+  										<table id="table_id_example" class="display">
+                          <thead>
+                              <tr>
+                                  <th>用户ID</th>
+                                   <th>用户名称</th>
+                                   <th>平台</th>
+                              </tr>
+                          </thead>
+
+                      </table>
+  										</div>
+  									</div>
+  								</div>
+
+  							</div><!-- /.col -->
+  						</div><!-- /.row -->
+  					</div><!-- /.page-content -->
+
+
+		</div>
+
+</body>
+   <div th:replace="script"></div>
+
+
+
+
+</html>
+<script type="text/javascript" src = "/js/config/platUser.js"></script>
+
