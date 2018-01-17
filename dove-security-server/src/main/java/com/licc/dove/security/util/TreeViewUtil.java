@@ -90,41 +90,41 @@ public class TreeViewUtil {
         return treeData.toString();
     }
 
-    public static void main(String arge[]) {
-        List<DoveResourceVO> list = new ArrayList<DoveResourceVO>();
-        DoveResourceVO doveResourceVO1 = new DoveResourceVO();
-        doveResourceVO1.setName("aaaa");
-        list.add(doveResourceVO1);
-        List<DoveResourceVO> listChild = new ArrayList<DoveResourceVO>();
-        DoveResourceVO cdoveResourceVO1 = new DoveResourceVO();
-        cdoveResourceVO1.setName("aaaa1");
-        cdoveResourceVO1.setId(1l);
-        listChild.add(cdoveResourceVO1);
-        DoveResourceVO cdoveResourceVO11 = new DoveResourceVO();
-        cdoveResourceVO11.setName("aaaa2");
-        cdoveResourceVO11.setId(1l);
-        listChild.add(doveResourceVO1);
-        doveResourceVO1.setChildren(listChild);
-
-        DoveResourceVO doveResourceVO2 = new DoveResourceVO();
-        doveResourceVO2.setName("bbbb");
-        list.add(doveResourceVO2);
-        DoveResourceVO doveResourceVO3 = new DoveResourceVO();
-        doveResourceVO3.setName("cccc");
-        list.add(doveResourceVO3);
-        Map<Long,Long> map = new HashMap<>();
-        map.put(1l,123l);
-        System.out.println(TreeViewUtil.treeResData(list,map));
-        List<DoveRole> roles = new ArrayList<>();
-        DoveRole r1 = new DoveRole();
-        r1.setName("1111");
-        r1.setId(1l);
-        roles.add(r1);
-        roles.add(r1);
-        roles.add(r1);
-
-      System.out.println(TreeViewUtil.treeRoleData(roles,map));
-
-    }
+//    public static void main(String arge[]) {
+//        List<DoveResourceVO> list = new ArrayList<DoveResourceVO>();
+//        DoveResourceVO doveResourceVO1 = new DoveResourceVO();
+//        doveResourceVO1.setName("aaaa");
+//        list.add(doveResourceVO1);
+//        List<DoveResourceVO> listChild = new ArrayList<DoveResourceVO>();
+//        DoveResourceVO cdoveResourceVO1 = new DoveResourceVO();
+//        cdoveResourceVO1.setName("aaaa1");
+//        cdoveResourceVO1.setId(1l);
+//        listChild.add(cdoveResourceVO1);
+//        DoveResourceVO cdoveResourceVO11 = new DoveResourceVO();
+//        cdoveResourceVO11.setName("aaaa2");
+//        cdoveResourceVO11.setId(1l);
+//        listChild.add(doveResourceVO1);
+//        doveResourceVO1.setChildren(listChild);
+//
+//        DoveResourceVO doveResourceVO2 = new DoveResourceVO();
+//        doveResourceVO2.setName("bbbb");
+//        list.add(doveResourceVO2);
+//        DoveResourceVO doveResourceVO3 = new DoveResourceVO();
+//        doveResourceVO3.setName("cccc");
+//        list.add(doveResourceVO3);
+//        Map<Long,Long> map = new HashMap<>();
+//        map.put(1l,123l);
+//        System.out.println(TreeViewUtil.treeResData(list,map));
+//        List<DoveRole> roles = new ArrayList<>();
+//        DoveRole r1 = new DoveRole();
+//        r1.setName("1111");
+//        r1.setId(1l);
+//        roles.add(r1);
+//        roles.add(r1);
+//        roles.add(r1);
+//
+//      System.out.println(TreeViewUtil.treeRoleData(roles,map));
+//
+//    }
 
 }

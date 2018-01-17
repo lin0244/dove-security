@@ -350,8 +350,5 @@ public class HttpClientUtil {
         }
         return responseStr;
     }
-    public static void main(String arge[]){
-     String s = HttpClientUtil.get("http://localhost:8070/sys/dove/echo/testConnection");
-        System.out.println(s);
-    }
+
 }
